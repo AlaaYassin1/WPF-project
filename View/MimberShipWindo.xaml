@@ -1,0 +1,250 @@
+﻿<Window x:Class="WPFLibrary.View.MimberShipWindo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFLibrary.View"
+        mc:Ignorable="d"
+        Title="MimberShipWindo" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Border CornerRadius="10,0,0,10"
+                    Grid.Column="0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0.7">
+                    <GradientStop Color="#24105F" Offset="0"/>
+                    <GradientStop Color="#210F55" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <StackPanel Margin="68,70,0,0">
+
+                <RadioButton  Style="{StaticResource menuButton}" Tag="#8A16C1" Checked="RadioButton_Checked"  >
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <!--<fa:IconImage Icon="Person" Style="{StaticResource menuButtonTcon}"/>-->
+                        <TextBlock HorizontalAlignment="Center" Text="Coach" Style="{StaticResource menubuttntext}"/>
+                    </StackPanel>
+                </RadioButton>
+
+                <RadioButton Style="{StaticResource menuButton}" Tag="#E285DE" >
+                    <StackPanel Orientation="Horizontal">
+                        <!--<fa:IconImage Icon="MoneyBill" Style="{StaticResource menuButtonTcon}"/>-->
+                        <TextBlock Text="Billing" Style="{StaticResource menubuttntext}"/>
+                    </StackPanel>
+                </RadioButton>
+
+                <RadioButton Style="{StaticResource menuButton}" Tag="#784DFD" >
+                    <StackPanel Orientation="Horizontal">
+                        <!--<fa:IconImage Icon="Share" Style="{StaticResource menuButtonTcon}"/>-->
+                        <TextBlock Text="MemberShips" Style="{StaticResource menubuttntext}"/>
+                    </StackPanel>
+                </RadioButton>
+
+                <RadioButton Style="{StaticResource menuButton}" Tag="#7E82FC" >
+                    <StackPanel Orientation="Horizontal">
+                        <!--<fa:IconImage Icon="PeopleGroup" Style="{StaticResource menuButtonTcon}"/>-->
+                        <TextBlock Text="Member" Style="{StaticResource menubuttntext}"/>
+                    </StackPanel>
+                </RadioButton>
+
+                <RadioButton Style="{StaticResource menuButton}" Tag="#FFC047" >
+                    <StackPanel Orientation="Horizontal">
+                        <!--<fa:IconImage Icon="Prescription" Style="{StaticResource menuButtonTcon}"/>-->
+                        <TextBlock Text="Reseptions" Style="{StaticResource menubuttntext}"/>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton Style="{StaticResource menuButton}" Tag="#FF0090" >
+                    <StackPanel Orientation="Horizontal">
+                        <!--<fa:IconImage Icon="Dashcube" Style="{StaticResource menuButtonTcon}"/>-->
+                        <TextBlock Text="Devices" Style="{StaticResource menubuttntext}"/>
+                    </StackPanel>
+                </RadioButton>
+
+            </StackPanel>
+
+        </Border>
+
+        <Border CornerRadius="0,10,10,0"
+                    Grid.Column="1">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="1,1" EndPoint="0,0">
+                    <GradientStop Color="#0A003A" Offset="0"/>
+                    <GradientStop Color="#1C0E49" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid Margin="20,50,20,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="120"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Orientation="Horizontal"
+                            VerticalAlignment="Top"
+                            Grid.Column="0">
+                        <!--<fa:IconImage Icon="Search" Height="20" Width="20" Foreground="#8A16C1"/>-->
+                        <TextBox x:Name="txtserh"
+                              
+                             FontSize="13"
+                             Height="24"
+                             Width="800"
+                             Background="Transparent"
+                             FontWeight="Medium"
+                             FontFamily="Montserrat"
+                             Margin="5,5,0,0"
+                             VerticalContentAlignment="Center"
+                             BorderThickness="0,0,0,1"
+                             Foreground="#737680"
+                             CaretBrush="#737680"
+                             BorderBrush="#737680" TextChanged="txtserh_TextChanged"></TextBox>
+
+
+
+
+                    </StackPanel>
+                    <Button Grid.Column="1"
+                                Margin="10,10,10,10"
+                         Content="Search"
+                        FontSize="12"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        BorderThickness="0"
+                        Foreground="White" Click="Button_Click">
+
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="#773DFF"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border Height="30"
+                                                    CornerRadius="15"
+                                                    Background="{TemplateBinding Background}">
+                                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                </Grid>
+                <StackPanel Grid.Row="2">
+                    <DataGrid x:Name="memberdatagrd"  MouseDoubleClick="memberdatagrd_MouseDoubleClick" AutoGenerateColumns="False" 
+                              Height="130"      VerticalScrollBarVisibility="Visible" Width="366"   >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="shid" Binding="{Binding shId}" Width="auto"/>
+                            <DataGridTextColumn Header="shname"  Binding="{Binding shName}"/>
+                            <DataGridTextColumn Header="Duration"  Binding="{Binding Duration}"/>
+                            <DataGridTextColumn Header="Goal"  Binding="{Binding Goal}"/>
+                            <DataGridTextColumn Header="Cost"  Binding="{Binding Cost}"/>
+
+
+                            <!--<DataGridTextColumn Header="Class"  Binding="{Binding Path=Class}"></DataGridTextColumn>-->
+
+
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </StackPanel>
+                <Button Grid.Row="1"
+                                Margin="20,0,358,92"
+                         Content="Add "
+                        FontSize="12"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        BorderThickness="0"
+                        Foreground="White"
+                        Background="Wheat" 
+                        Click="Button_Click_1" Height="53" VerticalAlignment="Bottom">
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#773DFF"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Height="30"
+                                                    CornerRadius="15"
+                                                    Background="{TemplateBinding Background}">
+                                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Grid.Row="1"
+                                Margin="161,0,217,103"
+                         Content="Edit Book"
+                        FontSize="12"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        BorderThickness="0"
+                        Foreground="White" Height="30" VerticalAlignment="Bottom" Click="Button_Click_3" >
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#E285DE"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Height="30"
+                                                    CornerRadius="15"
+                                                    Background="{TemplateBinding Background}">
+                                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Grid.Row="1"
+                           Margin="315,191,53,0"
+                         Content="Delete Book"
+                        FontSize="12"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        BorderThickness="0"
+                        Foreground="White"
+                        VerticalAlignment="Top" Click="Button_Click_2"  >
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#8A16C1"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Height="30"
+                                                    CornerRadius="15"
+                                                    Background="{TemplateBinding Background}">
+                                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+
+            </Grid>
+
+
+        </Border>
+
+    </Grid>
+
+</Window>
